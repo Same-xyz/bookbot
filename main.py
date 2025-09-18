@@ -22,7 +22,13 @@ Found {word_count} total words''')
     for item in sorted_list:
         if item["char"].isalpha():
             print(f"{item["char"]}: {item["num"]}")
+
+    # Used a generator below, trying pythonic syntax
+    # result= (f"{item["char"]}: {item["num"]}" for item in sorted_list if item["char"].isalpha())
+    # print(list(result))
     print("============= END ===============")
+
+
 
 
 main()
