@@ -1,12 +1,25 @@
 from stats import split_words, count_chars, sort_out
+import sys
 
-file_path: str = "./books/frankenstein.txt"
+file_path:str = ""
+# file_path: str = sys.argv[1]
+# print(sys.argv[1], sys.argv[2])
+# file_path: str = "books/frankenstein.txt"
+
+def check_args():
+    if len(sys.argv) <= 1:
+        print("Usage: python3 main.py <path_to_book>")
+        sys.exit(1)
+    return sys.argv[1]
+
 def get_books_text(file_path:str) -> str: 
     with open(file_path) as f:
         file_contents= f.read()
     return file_contents
 
 def main() -> str:
+    file_path: str = check_args()
+    print(file_path)
     contents = get_books_text(file_path)
     word_count: str = split_words(contents)
 
