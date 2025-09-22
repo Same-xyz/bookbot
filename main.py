@@ -13,8 +13,16 @@ def check_args():
     return sys.argv[1]
 
 def get_books_text(file_path:str) -> str: 
-    with open(file_path) as f:
-        file_contents= f.read()
+    try:
+        with open(file_path, "r") as f:
+            file_contents= f.read()
+    except FileNotFoundError:
+        print(f"Error: File not found at '{file_path}'")
+        sys.exit(1)
+    except PermissionError:
+        print(f"Error: Permission denied for '{file_path}'")
+        sys.exit(1)
+
     return file_contents
 
 def main() -> str:
